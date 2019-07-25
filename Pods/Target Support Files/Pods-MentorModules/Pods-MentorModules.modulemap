@@ -1,0 +1,6 @@
+module Pods_MentorModules {
+  umbrella header "Pods-MentorModules-umbrella.h"
+
+  export *
+  module * { export * }
+}

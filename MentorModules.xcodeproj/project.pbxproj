@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		087F3F80AFD2A4D5EFA57C38 /* libPods-MentorModules.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 946A9BEC8D90565640596A93 /* libPods-MentorModules.a */; };
 		095D5FFC22EA5E4E002A25A5 /* MentorModules.h in Headers */ = {isa = PBXBuildFile; fileRef = 095D5FFA22EA5E4E002A25A5 /* MentorModules.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0970B58422EA5EC800223FA0 /* MRAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970B58322EA5EC800223FA0 /* MRAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		095D5FF722EA5E4E002A25A5 /* MentorModules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MentorModules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		095D5FFA22EA5E4E002A25A5 /* MentorModules.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MentorModules.h; sourceTree = "<group>"; };
 		095D5FFB22EA5E4E002A25A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0970B58322EA5EC800223FA0 /* MRAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRAuth.swift; sourceTree = "<group>"; };
+		0E8C2FA3A07559D5D547EEA9 /* Pods-MentorModules.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentorModules.release.xcconfig"; path = "Target Support Files/Pods-MentorModules/Pods-MentorModules.release.xcconfig"; sourceTree = "<group>"; };
+		946A9BEC8D90565640596A93 /* libPods-MentorModules.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MentorModules.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B99A8E433C8D711318BD52 /* Pods-MentorModules.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MentorModules.debug.xcconfig"; path = "Target Support Files/Pods-MentorModules/Pods-MentorModules.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				087F3F80AFD2A4D5EFA57C38 /* libPods-MentorModules.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +39,8 @@
 			children = (
 				095D5FF922EA5E4E002A25A5 /* MentorModules */,
 				095D5FF822EA5E4E002A25A5 /* Products */,
+				25F1640FCC7C935359654B86 /* Pods */,
+				D437693D8D09F2F08E1CDDEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,9 +56,27 @@
 			isa = PBXGroup;
 			children = (
 				095D5FFA22EA5E4E002A25A5 /* MentorModules.h */,
+				0970B58322EA5EC800223FA0 /* MRAuth.swift */,
 				095D5FFB22EA5E4E002A25A5 /* Info.plist */,
 			);
 			path = MentorModules;
+			sourceTree = "<group>";
+		};
+		25F1640FCC7C935359654B86 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A7B99A8E433C8D711318BD52 /* Pods-MentorModules.debug.xcconfig */,
+				0E8C2FA3A07559D5D547EEA9 /* Pods-MentorModules.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D437693D8D09F2F08E1CDDEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				946A9BEC8D90565640596A93 /* libPods-MentorModules.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +97,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 095D5FFF22EA5E4E002A25A5 /* Build configuration list for PBXNativeTarget "MentorModules" */;
 			buildPhases = (
+				7BE56AE316CC89A9D8873145 /* [CP] Check Pods Manifest.lock */,
 				095D5FF222EA5E4E002A25A5 /* Headers */,
 				095D5FF322EA5E4E002A25A5 /* Sources */,
 				095D5FF422EA5E4E002A25A5 /* Frameworks */,
@@ -95,6 +123,7 @@
 				TargetAttributes = {
 					095D5FF622EA5E4E002A25A5 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -125,11 +154,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7BE56AE316CC89A9D8873145 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MentorModules-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		095D5FF322EA5E4E002A25A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0970B58422EA5EC800223FA0 /* MRAuth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +315,9 @@
 		};
 		095D600022EA5E4E002A25A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7B99A8E433C8D711318BD52 /* Pods-MentorModules.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -278,6 +335,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.edriving.MentorModules;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -285,7 +343,9 @@
 		};
 		095D600122EA5E4E002A25A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E8C2FA3A07559D5D547EEA9 /* Pods-MentorModules.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;

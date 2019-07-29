@@ -9,7 +9,7 @@ import Foundation
 
 class MRCacheManager {
     
-    private let expireTime: Int = 12600000
+    private let expireTime: Int = 12600000 // 3.5 hours
     var lastSyncTime: Int64 = 0
     var modules: Array<MRModule>?
     

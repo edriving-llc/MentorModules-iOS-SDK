@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		087F3F80AFD2A4D5EFA57C38 /* libPods-MentorModules.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 946A9BEC8D90565640596A93 /* libPods-MentorModules.a */; };
+		091B78B022EFB99A00B808D4 /* MRConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091B78AF22EFB99A00B808D4 /* MRConstants.swift */; };
+		091B78B222EFB99F00B808D4 /* MRCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091B78B122EFB99F00B808D4 /* MRCacheManager.swift */; };
 		0921F0BF22EF5EB1007C14E5 /* MRModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F0B922EF5EB1007C14E5 /* MRModule.swift */; };
 		0921F0C022EF5EB1007C14E5 /* MRModuleFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F0BA22EF5EB1007C14E5 /* MRModuleFetcher.swift */; };
 		0921F0C122EF5EB1007C14E5 /* MRSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0921F0BB22EF5EB1007C14E5 /* MRSessionManager.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		091B78AF22EFB99A00B808D4 /* MRConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRConstants.swift; sourceTree = "<group>"; };
+		091B78B122EFB99F00B808D4 /* MRCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRCacheManager.swift; sourceTree = "<group>"; };
 		0921F0B922EF5EB1007C14E5 /* MRModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRModule.swift; sourceTree = "<group>"; };
 		0921F0BA22EF5EB1007C14E5 /* MRModuleFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRModuleFetcher.swift; sourceTree = "<group>"; };
 		0921F0BB22EF5EB1007C14E5 /* MRSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRSessionManager.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				0921F0BB22EF5EB1007C14E5 /* MRSessionManager.swift */,
 				0921F0BC22EF5EB1007C14E5 /* MRUser.swift */,
 				0921F0BD22EF5EB1007C14E5 /* MRUserFetcher.swift */,
+				091B78AF22EFB99A00B808D4 /* MRConstants.swift */,
+				091B78B122EFB99F00B808D4 /* MRCacheManager.swift */,
 				095D5FFB22EA5E4E002A25A5 /* Info.plist */,
 			);
 			path = MentorModules;
@@ -201,8 +207,10 @@
 			files = (
 				0921F0C422EF5EB1007C14E5 /* MRError.swift in Sources */,
 				0921F0BF22EF5EB1007C14E5 /* MRModule.swift in Sources */,
+				091B78B022EFB99A00B808D4 /* MRConstants.swift in Sources */,
 				0921F0C022EF5EB1007C14E5 /* MRModuleFetcher.swift in Sources */,
 				0921F0C322EF5EB1007C14E5 /* MRUserFetcher.swift in Sources */,
+				091B78B222EFB99F00B808D4 /* MRCacheManager.swift in Sources */,
 				0921F0C222EF5EB1007C14E5 /* MRUser.swift in Sources */,
 				0921F0C122EF5EB1007C14E5 /* MRSessionManager.swift in Sources */,
 			);

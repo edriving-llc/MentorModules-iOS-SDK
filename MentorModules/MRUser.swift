@@ -9,8 +9,8 @@ import Foundation
 
 public class MRUser {
     
-    var clientUserId: String
-    var edrivingUserId: String
+    public var clientUserId: String
+    public var edrivingUserId: String
     
     init(clientUserId: String, edrivingUserId: String) {
         self.clientUserId = clientUserId

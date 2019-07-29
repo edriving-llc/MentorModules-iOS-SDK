@@ -11,6 +11,7 @@ s.author = { "Jeffrey Wang" => "jeffrey.wang@edriving.com" }
 s.homepage = "https://bitbucket.org/edrivingllc/modulessdk_ios/src/master/"
 s.source = { :git => "https://bitbucket.org/edrivingllc/modulessdk_ios.git", :tag => "#{s.version}" }
 s.dependency 'Alamofire'
+s.dependency 'SwiftyJSON'
 s.source_files = "MentorModules/**/*.{swift}"
 s.swift_version = "5.0"
 

@@ -10,25 +10,24 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-public class MRUserFetcher {
+class MRUserFetcher {
     
-    public init() {}
-
-    public static func getUser(clientUserId: String, completion: @escaping (MRUser?, Error?) -> Void) {
+    static func getUser(clientUserId: String, language: String, countryCode: String, timezone: String, completion: @escaping (MRUser?, Error?) -> Void) {
         
-        guard let url = URL(string: "\(APPURL.BaseURL)v1/users/\(clientUserId)") else {
+        guard let url = URL(string: "\(MRSessionManager.shared().baseURL)v1/users/\(clientUserId)?language=\(language)&countryCode=\(countryCode)&timezone=\(timezone)") else {
             completion(nil, MRError.urlInvalid)
             return
         }
         
-        let headers: HTTPHeaders = ["x-api-key" : MRSessionManager.shared().apiKey!]
+        let headers: HTTPHeaders = MRSessionManager.getHeaders()
+        
         Alamofire.request(url, method: .put, parameters: nil, encoding: URLEncoding.default, headers: headers).validate().responseJSON { response in
             
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
                 
-                let clientUserId = json["nartoUserId"].stringValue
+                let clientUserId = json["nautoUserId"].stringValue
                 let edrivingUserId = json["edrivingUserId"].stringValue
                 let user = MRUser(clientUserId: clientUserId, edrivingUserId: edrivingUserId)
                 completion(user, nil)

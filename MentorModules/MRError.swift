@@ -10,6 +10,7 @@ import Foundation
 public enum MRError: Error, CustomStringConvertible {
     case missingAPIKey
     case urlInvalid
+    case missingParameters
     
     public var description: String {
         get {
@@ -18,6 +19,8 @@ public enum MRError: Error, CustomStringConvertible {
                 return "missingAPIKey"
             case .urlInvalid:
                 return "urlInvalid"
+            case .missingParameters:
+                return "missingParameters"
             }
         }
     }
@@ -30,6 +33,8 @@ extension MRError: LocalizedError {
             return NSLocalizedString("API Key is missing.", comment: "missingAPIKey")
         case .urlInvalid:
             return NSLocalizedString("URL is invalid.", comment: "urlInvalid")
+        case .missingParameters:
+            return NSLocalizedString("Parameters are missing.", comment: "missingParameters")
         }
     }
 }

@@ -5,7 +5,7 @@ s.ios.deployment_target = '12.0'
 s.name = "MentorModules"
 s.summary = "MentorModules by eDriving"
 s.requires_arc = true
-s.version = "0.1.0"
+s.version = "0.1.1"
 s.license = { :type => "MIT", :file => "LICENSE" }
 s.author = { "Jeffrey Wang" => "jeffrey.wang@edriving.com" }
 s.homepage = "https://bitbucket.org/edrivingllc/modulessdk_ios/src/master/"

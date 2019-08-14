@@ -8,13 +8,11 @@
 import Foundation
 
 struct DEFAULTS {
-    
     static let deviceIdUserDefaultsKey = "com.edriving.mentormodulessdk.deviceId"
     static let modulesSyncTimeUserDefaultsKey = "com.edriving.mentormodulessdk.modulesSyncTime"
 }
 
-
 struct APPURL {
-    
-    static let BaseURL = "https://47y01h2snf.execute-api.us-west-2.amazonaws.com/dev/narto/"
+    static let dev = "https://47y01h2snf.execute-api.us-west-2.amazonaws.com/dev/narto/"
+    static let prod = "https://47y01h2snf.execute-api.us-west-2.amazonaws.com/dev/narto/"
 }

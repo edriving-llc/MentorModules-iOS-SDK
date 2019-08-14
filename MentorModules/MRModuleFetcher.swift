@@ -9,19 +9,17 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-public class MRModuleFetcher {
+class MRModuleFetcher {
     
-    public init() {}
-    
-    public static func getModules(clientUserId: String, completion: @escaping (Array<MRModule>?, Error?) -> Void) {
+    static func getModules(clientUserId: String, completion: @escaping (Array<MRModule>?, Error?) -> Void) {
         
-        guard let url = URL(string: "\(APPURL.BaseURL)v1/users/\(clientUserId)/modules") else {
+        guard let url = URL(string: "\(MRSessionManager.shared().baseURL)v1/users/\(clientUserId)/modules") else {
             completion(nil, MRError.urlInvalid)
             return
         }
         
-        let headers: HTTPHeaders = ["x-api-key" : MRSessionManager.shared().apiKey!,
-        ]
+        let headers: HTTPHeaders = MRSessionManager.getHeaders()
+        
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).validate().responseJSON { response in
             
             switch response.result {

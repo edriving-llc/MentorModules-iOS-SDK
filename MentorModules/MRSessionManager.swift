@@ -15,32 +15,39 @@ class MRSessionManager {
         return sharedSession
     }()
     
-    var apiKey: String?
+    var apiKey: String? {
+        didSet {
+            if let aK = apiKey {
+                if aK.hasPrefix("P") {
+                    baseURL = APPURL.prod
+                } else {
+                    baseURL = APPURL.stage
+                }
+            }
+        }
+    }
     var clientUserId: String?
+    var edrivingUserId: String?
     var langauge: String?
     var countryCode: String?
     var timezone: String?
     var deviceId: String?
     var baseURL: String = ""
     
-    private init() {}
+    private init() {
+        self.deviceId = MRSessionManager.getDeviceId()
+    }
     
     class func shared() -> MRSessionManager {
         return sharedSession
     }
     
-    class func initSDK(apiKey: String, clientUserId: String, langauge: String, countryCode: String, timezone: String) {
+    class func initSDK(apiKey: String, clientUserId: String, langauge: String?, countryCode: String?, timezone: String?) {
         sharedSession.apiKey = apiKey
         sharedSession.clientUserId = clientUserId
         sharedSession.langauge = langauge
         sharedSession.countryCode = countryCode
         sharedSession.timezone = timezone
-        sharedSession.deviceId = getDeviceId()
-        if apiKey.hasPrefix("PROD") {
-            sharedSession.baseURL = APPURL.prod
-        } else {
-            sharedSession.baseURL = APPURL.dev
-        }
     }
     
     class func getDeviceId() -> String {
@@ -53,25 +60,23 @@ class MRSessionManager {
         }
     }
     
-    class func getUser(clientUserId: String, completion: @escaping (MRUser?, Error?) -> Void) {
-        guard sharedSession.apiKey != nil else {
-            completion(nil, MRError.missingAPIKey)
-            return
-        }
-        
-        guard let cUID = sharedSession.clientUserId, let lang = sharedSession.langauge, let cc = sharedSession.countryCode, let tz = sharedSession.timezone else {
-            completion(nil, MRError.missingParameters)
-            return
-        }
-        
-        MRUserFetcher.getUser(clientUserId: cUID, language: lang, countryCode: cc, timezone: tz) { (user, error) in
-            completion(user, error)
+    class func getUser(completion: @escaping (MRUser?, Error?) -> Void) {
+        if let cUID = sharedSession.clientUserId, let lang = sharedSession.langauge, let cc = sharedSession.countryCode, let tz = sharedSession.timezone {
+            MRUserFetcher.getUser(clientUserId: cUID, language: lang, countryCode: cc, timezone: tz) { (user, error) in
+                sharedSession.edrivingUserId = user?.edrivingUserId
+                completion(user, error)
+            }
+        } else if let cUID = sharedSession.clientUserId {
+            MRUserFetcher.getUser(clientUserId: cUID) { (user, error) in
+                sharedSession.edrivingUserId = user?.edrivingUserId
+                completion(user, error)
+            }
         }
     }
     
     class func getModules(clientUserId: String, completion: @escaping (Array<MRModule>?, Error?) -> Void) {
         guard sharedSession.apiKey != nil else {
-            completion(nil, MRError.missingAPIKey)
+            completion(nil, MRError.notInitialized)
             return
         }
         
@@ -81,7 +86,9 @@ class MRSessionManager {
     }
     
     class func getHeaders() -> HTTPHeaders {
-        return ["x-api-key" : MRSessionManager.shared().apiKey!,
+        let aK = MRSessionManager.shared().apiKey!
+        let truncatedAK = String(aK.suffix(aK.count - 1))
+        return ["x-api-key" : truncatedAK,
                 "device-id" : MRSessionManager.shared().deviceId!]
     }
 

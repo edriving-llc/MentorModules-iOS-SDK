@@ -9,10 +9,9 @@ import Foundation
 
 struct DEFAULTS {
     static let deviceIdUserDefaultsKey = "com.edriving.mentormodulessdk.deviceId"
-    static let modulesSyncTimeUserDefaultsKey = "com.edriving.mentormodulessdk.modulesSyncTime"
 }
 
 struct APPURL {
-    static let dev = "https://47y01h2snf.execute-api.us-west-2.amazonaws.com/dev/narto/"
-    static let prod = "https://47y01h2snf.execute-api.us-west-2.amazonaws.com/dev/narto/"
+    static let stage = "https://47y01h2snf.execute-api.us-west-2.amazonaws.com/dev/nauto/"
+    static let prod = "https://g11qg5dtz2.execute-api.us-west-2.amazonaws.com/prod/nauto/"
 }

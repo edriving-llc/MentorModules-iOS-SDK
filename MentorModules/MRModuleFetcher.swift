@@ -12,20 +12,21 @@ import SwiftyJSON
 class MRModuleFetcher {
     
     static func getModules(clientUserId: String, completion: @escaping (Array<MRModule>?, Error?) -> Void) {
+        if !MRConnectivity.isConnectedToInternet {
+            completion(nil, MRError.noNetwork)
+            return
+        }
         
         guard let url = URL(string: "\(MRSessionManager.shared().baseURL)v1/users/\(clientUserId)/modules") else {
-            completion(nil, MRError.urlInvalid)
+            completion(nil, MRError.invalidURL)
             return
         }
         
         let headers: HTTPHeaders = MRSessionManager.getHeaders()
-        
         Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).validate().responseJSON { response in
-            
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                
                 var modules = Array<MRModule>()
                 for dict in json.arrayValue {
                     let courseCode = dict["course_code"].stringValue
@@ -38,7 +39,11 @@ class MRModuleFetcher {
                 }
                 completion(modules, nil)
             case .failure(let error):
-                completion(nil, error)
+                if response.response?.statusCode == 403 {
+                    completion(nil, MRError.invalidAPIKey)
+                } else {
+                    completion(nil, error)
+                }
             }
         }
     }

@@ -46,7 +46,7 @@ modules.initSDK(apiKey: <API_KEY>, clientUserId: <USER_ID>, langauge: "en", coun
 
 Get modules 
 ```swift
-modules.getModules() { [weak self] (modules, error) in
+modules.getModules() { (modules, error) in
             ...
         }
 ```

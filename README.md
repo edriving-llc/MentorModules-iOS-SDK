@@ -28,7 +28,7 @@ import MentorModules
 
 ```swift
 let modules = MRModules()
-modules.initSDK(apiKey: <API-KEY>, clientUserId: <YOUR-USER-ID>) { (user, error) in
+modules.initSDK(apiKey: <API_KEY>, clientUserId: <USER_ID>) { (user, error) in
             ...
 
             modules.getModules() { [weak self] (modules, error) in
@@ -45,7 +45,7 @@ modules.initSDK(apiKey: <API-KEY>, clientUserId: <YOUR-USER-ID>) { (user, error)
 
 ```objc
 MRModules *modules = [MRModules new];
-[modules initSDKWithApiKey:<API-KEY> clientUserId:<YOUR-USER-ID> completion:^(MRUser *user, NSError *error) {
+[modules initSDKWithApiKey:<API_KEY> clientUserId:<USER_ID> completion:^(MRUser *user, NSError *error) {
 	...
 	[modules getModulesWithCompletion:^(NSArray<MRModule *> *modules, NSError *error) {
 		...

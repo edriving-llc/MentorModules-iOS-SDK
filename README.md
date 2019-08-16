@@ -1,29 +1,54 @@
-# README #
+# MentorModules #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### Installation with CocoaPods ###
 
-### What is this repository for? ###
+#### Podfile
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+To integrate MentorModules into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-### How do I get set up? ###
+```ruby
+target 'TargetName' do
+pod 'MentorModules'
+end
+```
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+Then, run the following command:
 
-### Contribution guidelines ###
+```bash
+$ pod install
+```
 
-* Writing tests
-* Code review
-* Other guidelines
+### Usage ###
 
-### Who do I talk to? ###
+#### Swift
 
-* Repo owner or admin
-* Other community or team contact
+```swift
+import MentorModules
+```
+
+```swift
+let modules = MRModules()
+modules.initSDK(apiKey: <API-KEY>, clientUserId: <YOUR-USER-ID>) { (user, error) in
+            ...
+
+            modules.getModules() { [weak self] (modules, error) in
+            	...
+            }
+        }
+```
+
+#### Objective-C
+
+```objc
+#import "MentorModules-Swift.h"
+```
+
+```objc
+MRModules *modules = [MRModules new];
+[modules initSDKWithApiKey:<API-KEY> clientUserId:<YOUR-USER-ID> completion:^(MRUser *user, NSError *error) {
+	...
+	[modules getModulesWithCompletion:^(NSArray<MRModule *> *modules, NSError *error) {
+		...
+	}];
+}];
+```

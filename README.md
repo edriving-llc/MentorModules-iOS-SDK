@@ -26,16 +26,32 @@ $ pod install
 import MentorModules
 ```
 
+Initialize
 ```swift
 let modules = MRModules()
 modules.initSDK(apiKey: <API_KEY>, clientUserId: <USER_ID>) { (user, error) in
             ...
-
-            modules.getModules() { [weak self] (modules, error) in
-            	...
-            }
         }
 ```
+
+Optionally, include language, country code and timezone.
+Language: https://www.wikiwand.com/en/List_of_ISO_639-1_codes
+Country Code: https://www.wikiwand.com/en/ISO_3166-1_alpha-2
+Timezone: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+```swift
+modules.initSDK(apiKey: <API_KEY>, clientUserId: <USER_ID>, langauge: "en", countryCode: "us", timezone: "America/Los_Angeles") { (user, error) in
+            ...
+        }
+```
+
+Get modules 
+```swift
+modules.getModules() { [weak self] (modules, error) in
+            ...
+        }
+```
+
+Note: initSDK(...) must finish before you can call getModules().
 
 #### Objective-C
 
@@ -45,10 +61,13 @@ modules.initSDK(apiKey: <API_KEY>, clientUserId: <USER_ID>) { (user, error) in
 
 ```objc
 MRModules *modules = [MRModules new];
-[modules initSDKWithApiKey:<API_KEY> clientUserId:<USER_ID> completion:^(MRUser *user, NSError *error) {
+[modules initSDKWithApiKey:<API_KEY> clientUserId:<USER_ID> langauge:@"en" countryCode:@"us" timezone:@"America/Los_Angeles" completion:^(MRUser *user, NSError *error) {
 	...
-	[modules getModulesWithCompletion:^(NSArray<MRModule *> *modules, NSError *error) {
-		...
-	}];
+}];
+
+...
+
+[modules getModulesWithCompletion:^(NSArray<MRModule *> *modules, NSError *error) {
+	...
 }];
 ```

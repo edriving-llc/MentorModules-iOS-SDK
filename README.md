@@ -34,9 +34,9 @@ modules.initSDK(apiKey: <API_KEY>, clientUserId: <USER_ID>) { (user, error) in
         }
 ```
 
-Optionally, include language, country code and timezone.
-Language: https://www.wikiwand.com/en/List_of_ISO_639-1_codes
-Country Code: https://www.wikiwand.com/en/ISO_3166-1_alpha-2
+Optionally, include language, country code and timezone.<br/>
+Language: https://www.wikiwand.com/en/List_of_ISO_639-1_codes<br/>
+Country Code: https://www.wikiwand.com/en/ISO_3166-1_alpha-2<br/>
 Timezone: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 ```swift
 modules.initSDK(apiKey: <API_KEY>, clientUserId: <USER_ID>, langauge: "en", countryCode: "us", timezone: "America/Los_Angeles") { (user, error) in

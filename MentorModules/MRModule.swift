@@ -7,25 +7,34 @@
 
 import Foundation
 
-public class MRModule {
+public class MRModule: NSObject {
     
-    public var courseCode: String
-    public var courseMasterCode: String
-    public var prescribeTS: Int64
-    public var url: String
-    public var urlExpireTS: Int64
+    @objc public var productCode: String
+    @objc public var category : String
+    @objc public var name : String
+    @objc public var link : String
+    @objc public var createdOn : Int64
+    @objc public var linkExpireOn : Int64
     
-    init(courseCode: String, courseMasterCode: String, prescribeTS: Int64, url: String, urlExpireTS: Int64) {
-        self.courseCode = courseCode
-        self.courseMasterCode = courseMasterCode
-        self.prescribeTS = prescribeTS
-        self.url = url
-        self.urlExpireTS = urlExpireTS
+    init(productCode: String, category: String, name: String, link: String, createdOn: Int64, linkExpireOn: Int64) {
+        self.productCode = productCode
+        self.category = category
+        self.name = name
+        self.link = link
+        self.createdOn = createdOn
+        self.linkExpireOn = linkExpireOn
     }
 }
 
-extension MRModule: CustomStringConvertible {
-    public var description : String {
-        return "\nurl = \(url)"
+extension MRModule {
+    override public var description : String {
+        var desc = ""
+        desc += "productCode: \(productCode)"
+        desc += "\ncategory: \(category)"
+        desc += "\nname: \(name)"
+        desc += "\nlink: \(link)"
+        desc += "\ncreatedOn: \(createdOn)"
+        desc += "\nlinkExpireOn: \(linkExpireOn)"
+        return desc
     }
 }

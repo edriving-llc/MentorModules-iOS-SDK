@@ -7,6 +7,10 @@
 
 import Foundation
 
+struct CONSTANTS {
+    static let version = 1.0
+}
+
 struct DEFAULTS {
     static let deviceIdUserDefaultsKey = "com.edriving.mentormodulessdk.deviceId"
 }

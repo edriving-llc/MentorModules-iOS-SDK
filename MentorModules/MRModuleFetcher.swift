@@ -29,12 +29,13 @@ class MRModuleFetcher {
                 let json = JSON(value)
                 var modules = Array<MRModule>()
                 for dict in json.arrayValue {
-                    let courseCode = dict["course_code"].stringValue
-                    let courseMasterCode = dict["course_master_code"].stringValue
-                    let prescribeTS = dict["prescribe_ts"].int64Value
-                    let url = dict["url"].stringValue
-                    let urlExpireTS = dict["url_expire_ts"].int64Value
-                    let module = MRModule(courseCode: courseCode, courseMasterCode: courseMasterCode, prescribeTS: prescribeTS, url: url, urlExpireTS: urlExpireTS)
+                    let productCode = dict["productCode"].stringValue
+                    let category = dict["category"].stringValue
+                    let name = dict["name"].stringValue
+                    let link = dict["link"].stringValue
+                    let createdOn = dict["createdOn"].int64Value
+                    let linkExpireOn = dict["linkExpireOn"].int64Value
+                    let module = MRModule(productCode: productCode, category: category, name: name, link: link, createdOn: createdOn, linkExpireOn: linkExpireOn)
                     modules.append(module)
                 }
                 completion(modules, nil)

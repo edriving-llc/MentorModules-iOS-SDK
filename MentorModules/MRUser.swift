@@ -7,10 +7,10 @@
 
 import Foundation
 
-public class MRUser {
+public class MRUser: NSObject {
     
-    public var clientUserId: String
-    public var edrivingUserId: String
+    @objc public var clientUserId: String
+    @objc public var edrivingUserId: String
     
     init(clientUserId: String, edrivingUserId: String) {
         self.clientUserId = clientUserId

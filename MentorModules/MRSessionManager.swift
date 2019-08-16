@@ -74,22 +74,31 @@ class MRSessionManager {
         }
     }
     
-    class func getModules(clientUserId: String, completion: @escaping (Array<MRModule>?, Error?) -> Void) {
-        guard sharedSession.apiKey != nil else {
+    class func getModules(completion: @escaping (Array<MRModule>?, Error?) -> Void) {
+        guard sharedSession.apiKey != nil, let cUID = sharedSession.clientUserId else {
             completion(nil, MRError.notInitialized)
             return
         }
         
-        MRModuleFetcher.getModules(clientUserId: clientUserId) { (modules, error) in
+        MRModuleFetcher.getModules(clientUserId: cUID) { (modules, error) in
             completion(modules, error)
         }
     }
     
     class func getHeaders() -> HTTPHeaders {
         let aK = MRSessionManager.shared().apiKey!
+        if aK.count < 1 {
+            return [:]
+        }
         let truncatedAK = String(aK.suffix(aK.count - 1))
         return ["x-api-key" : truncatedAK,
-                "device-id" : MRSessionManager.shared().deviceId!]
+                "device-id" : MRSessionManager.shared().deviceId!,
+                "ED_OS_PLATFORM" : "iOS",
+                "ED_OS_VERSION" : UIDevice.current.systemVersion,
+                "ED_DEVICE" : UIDevice.current.name,
+                "ED_APP" : "MentorModulesSDK",
+                "ED_APP_VERSION" : String(CONSTANTS.version)
+        ]
     }
 
 }

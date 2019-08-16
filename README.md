@@ -51,7 +51,7 @@ modules.getModules() { [weak self] (modules, error) in
         }
 ```
 
-Note: initSDK(...) must finish before you can call getModules().
+**Note: initSDK(...) must finish before you can call getModules().**
 
 #### Objective-C
 
